@@ -1,0 +1,16 @@
+{
+  "name": "Smart Class Pro SDN Situgede 5",
+  "short_name": "SmartClass",
+  "description": "Aplikasi Administrasi Rombel SDN Situgede 5",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1e3a8a",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
