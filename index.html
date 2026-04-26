@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Class Pro V1.4 - SDN Situgede 5</title>
+    <title>Smart Class Pro V1.5 - SDN Situgede 5</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e3a8a">
     
@@ -19,7 +19,7 @@
         .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(30, 64, 175, 0.1); }
         .card-shadow { box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04); }
         .logo-container { border: 3px solid #fff; box-shadow: 0 0 15px rgba(30, 64, 175, 0.3); }
-        .animate-fade { animation: fadeIn 0.5s ease-out; }
+        .animate-fade { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -32,13 +32,13 @@
                     <img src="https://i.postimg.cc/wTJ7qP8W/Chat-GPT-Image-26-Apr-2026-23-02-01.png" alt="Operator Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
-                    <h1 class="text-2xl font-black tracking-tighter text-blue-900 uppercase italic">Smart Class <span class="text-blue-500">Pro V1.4</span></h1>
+                    <h1 class="text-2xl font-black tracking-tighter text-blue-900 uppercase italic">Smart Class <span class="text-blue-500">Pro V1.5</span></h1>
                     <p class="text-[10px] font-extrabold text-blue-400 uppercase tracking-widest">Digital Hub SDN Situgede 5</p>
                 </div>
             </div>
             <div class="text-right">
-                <p class="text-sm font-bold text-slate-800">Cecep Solehudin, S.Kom</p>
-                <p class="text-[9px] font-black text-blue-600 uppercase italic">Systems Developer</p>
+                <p class="text-sm font-bold text-slate-800">Cecep Solehudin</p>
+                <p class="text-[9px] font-black text-blue-600 uppercase italic">Pembuat Aplikasi</p>
             </div>
         </div>
     </nav>
@@ -76,19 +76,18 @@
             <div class="blue-gradient rounded-[2.5rem] p-10 text-white card-shadow relative overflow-hidden">
                 <div class="relative z-10">
                     <p class="text-xs font-black uppercase text-blue-100 mb-2 italic">Update: 26 April 2026</p>
-                    <h2 id="currentDate" class="text-3xl font-black mb-6 tracking-tighter">Memuat Tanggal...</h2>
+                    <h2 id="currentDate" class="text-3xl font-black mb-6 tracking-tighter">Memuat...</h2>
                     <div class="flex gap-4">
-                        <div class="bg-white/10 rounded-2xl p-4 flex-1">
-                            <p class="text-[9px] font-black uppercase text-blue-200">Total Siswa</p>
+                        <div class="bg-white/10 rounded-2xl p-4 flex-1 text-center">
+                            <p class="text-[9px] font-black uppercase text-blue-200">Siswa Terbaca</p>
                             <p id="statSiswa" class="text-2xl font-black tabular-nums">0</p>
                         </div>
-                        <div class="bg-white/10 rounded-2xl p-4 flex-1">
-                            <p class="text-[9px] font-black uppercase text-blue-200">Rombel</p>
+                        <div class="bg-white/10 rounded-2xl p-4 flex-1 text-center">
+                            <p class="text-[9px] font-black uppercase text-blue-200">Total Rombel</p>
                             <p id="statRombel" class="text-2xl font-black tabular-nums">0</p>
                         </div>
                     </div>
                 </div>
-                <svg class="absolute -right-4 -bottom-4 w-40 h-40 opacity-10" fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path></svg>
             </div>
         </div>
 
@@ -97,21 +96,21 @@
                 <div class="glass rounded-3xl p-8 card-shadow border-b-4 border-blue-600">
                     <input type="file" id="fileUpload" multiple accept=".xlsx, .xls" class="hidden" onchange="updateFileLabel(this)">
                     <button onclick="document.getElementById('fileUpload').click()" class="w-full py-5 blue-gradient text-white rounded-2xl font-black text-xs tracking-widest shadow-lg hover:shadow-blue-200 transition-all uppercase">
-                        📂 Pilih Data Siswa
+                        📂 Unggah Data Siswa
                     </button>
-                    <p id="fileLabel" class="text-center text-[9px] font-bold text-blue-500 mt-4 italic uppercase">Belum ada file terpilih</p>
+                    <p id="fileLabel" class="text-center text-[9px] font-bold text-blue-500 mt-4 italic uppercase">Klik tombol di atas</p>
                 </div>
 
                 <div class="glass rounded-3xl p-8 card-shadow">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-1">
-                            <label class="text-[9px] font-black text-slate-400 uppercase ml-2 italic">Tingkat</label>
+                            <label class="text-[9px] font-black text-slate-400 uppercase ml-2">Tingkat</label>
                             <select id="grade" class="w-full p-4 border border-blue-50 rounded-2xl font-bold text-xs outline-none focus:border-blue-500">
                                 <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
                             </select>
                         </div>
                         <div class="space-y-1">
-                            <label class="text-[9px] font-black text-slate-400 uppercase ml-2 italic">Jml Rombel</label>
+                            <label class="text-[9px] font-black text-slate-400 uppercase ml-2">Jumlah Kelas</label>
                             <input type="number" id="num" value="2" onchange="initUI()" class="w-full p-4 border border-blue-50 rounded-2xl font-bold text-xs outline-none focus:border-blue-500">
                         </div>
                     </div>
@@ -123,14 +122,14 @@
             <div class="lg:col-span-8 space-y-8">
                 <div class="glass rounded-[2.5rem] p-10 card-shadow border-t-8 border-blue-900">
                     <h3 class="text-[10px] font-black text-blue-900 uppercase mb-8 tracking-widest italic flex items-center gap-2">
-                        <span class="w-2 h-2 bg-blue-600 rounded-full animate-ping"></span> Pengesahan Dokumen
+                        <span class="w-2 h-2 bg-blue-600 rounded-full animate-ping"></span> Data Pengesahan Dokumen
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100">
-                            <label class="text-[10px] font-black text-blue-600 uppercase mb-2 block">Kepala Sekolah</label>
-                            <input type="text" id="kepsek" value="Neng Nia Juwita Septiani" class="w-full bg-transparent border-b-2 border-slate-200 font-black text-sm outline-none uppercase py-1 focus:border-blue-600 transition-all">
-                            <label class="text-[8px] font-black text-slate-400 uppercase mt-2 block italic">NIP Kepala Sekolah</label>
-                            <input type="text" id="nip" value="198509062011012003" class="w-full bg-transparent text-[10px] font-bold text-blue-400 outline-none border-b border-dashed border-blue-100 py-1">
+                            <label class="text-[10px] font-black text-blue-600 uppercase mb-1 block">Kepala Sekolah</label>
+                            <input type="text" id="kepsek" value="Neng Nia Juwita Septiani" class="w-full bg-transparent border-b-2 border-slate-200 font-black text-sm outline-none py-1 focus:border-blue-600">
+                            <label class="text-[8px] font-black text-slate-400 uppercase mt-3 block italic">NIP Kepala Sekolah</label>
+                            <input type="text" id="nip" value="198509062011012003" class="w-full bg-transparent text-[10px] font-bold text-blue-400 outline-none border-b border-dashed border-blue-100">
                         </div>
                         <div id="waliArea" class="space-y-4"></div>
                     </div>
@@ -138,10 +137,10 @@
 
                 <div class="flex flex-wrap gap-4">
                     <button onclick="process()" class="flex-1 py-6 blue-gradient text-white rounded-[2rem] font-black text-xs tracking-[0.3em] shadow-2xl hover:scale-[1.02] transition-all uppercase">
-                        🚀 Proses Rombel
+                        🚀 Jalankan Sistem
                     </button>
                     <button id="btnPDF" onclick="printPDF()" class="hidden flex-1 py-6 bg-slate-900 text-white rounded-[2rem] font-black text-xs tracking-[0.3em] shadow-xl hover:bg-blue-800 transition-all uppercase">
-                        🖨️ Cetak F4
+                        🖨️ Cetak ke F4
                     </button>
                 </div>
 
@@ -152,7 +151,7 @@
 
     <footer class="fixed bottom-0 w-full glass border-t-4 border-blue-700 p-4 z-[100]">
         <marquee class="text-[10px] font-black uppercase italic tracking-[0.2em] text-blue-900">
-            Smart Class Pro V1.4 — Dikembangkan oleh Cecep Solehudin — SDN Situgede 5 Kota Bogor — Progressive Web App Ready
+            Smart Class Pro V1.5 — SDN Situgede 5 Kota Bogor — Dikembangkan oleh Cecep Solehudin, S.Kom
         </marquee>
     </footer>
 
@@ -165,18 +164,20 @@
             const wArea = document.getElementById('waliArea');
             const rArea = document.getElementById('requestArea');
             wArea.innerHTML = ''; rArea.innerHTML = '';
+            
             for(let i=0; i<n; i++) {
                 wArea.innerHTML += `
-                <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-50">
+                <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-50 animate-fade">
                     <label class="text-[9px] font-black text-blue-400 uppercase italic mb-1 block">Wali Kelas ${ALPHABET[i]}</label>
-                    <input type="text" id="w_${i}" placeholder="Nama Lengkap & Gelar" class="w-full bg-transparent border-b font-bold text-xs py-1 outline-none mb-2">
+                    <input type="text" id="w_${i}" placeholder="Nama & Gelar" class="w-full bg-transparent border-b font-bold text-xs py-1 outline-none mb-2 focus:border-blue-500">
                     <label class="text-[8px] font-black text-slate-300 uppercase block italic">NIP Wali Kelas</label>
-                    <input type="text" id="wnip_${i}" placeholder="NIP (Isi - jika tidak ada)" class="w-full bg-transparent border-b border-dashed text-[10px] py-1 outline-none">
+                    <input type="text" id="wnip_${i}" placeholder="Input NIP" class="w-full bg-transparent border-b border-dashed text-[10px] py-1 outline-none">
                 </div>`;
+                
                 rArea.innerHTML += `
                 <div class="relative animate-fade">
-                    <textarea id="req_${i}" placeholder="Input nama siswa khusus di sini (Rombel ${ALPHABET[i]})..." class="w-full p-5 border border-blue-50 rounded-3xl text-[11px] font-bold outline-none focus:border-blue-500 min-h-[100px]"></textarea>
-                    <span class="absolute top-0 right-5 bg-blue-600 text-white text-[9px] px-3 py-1 rounded-b-lg font-black italic">REQ ${ALPHABET[i]}</span>
+                    <textarea id="req_${i}" placeholder="Input nama siswa khusus Rombel ${ALPHABET[i]}..." class="w-full p-5 border border-blue-50 rounded-3xl text-[11px] font-bold outline-none focus:border-blue-500 min-h-[80px]"></textarea>
+                    <span class="absolute top-0 right-5 bg-blue-600 text-white text-[9px] px-3 py-1 rounded-b-lg font-black italic">${ALPHABET[i]}</span>
                 </div>`;
             }
             document.getElementById('currentDate').innerText = formatTgl(new Date());
@@ -192,27 +193,38 @@
             if(f) { const r = new FileReader(); r.onload = (e) => document.getElementById(id).src = e.target.result; r.readAsDataURL(f); }
         }
 
-        function updateFileLabel(input) { document.getElementById('fileLabel').innerText = `${input.files.length} DATA EXCEL TERHUBUNG`; }
+        function updateFileLabel(input) { 
+            document.getElementById('fileLabel').innerText = `${input.files.length} File Excel Terkoneksi`; 
+        }
 
         async function process() {
             const files = document.getElementById('fileUpload').files;
-            if(files.length === 0 && master.length === 0) return alert("Ups! Mohon pilih file Excel data siswanya dulu ya.");
+            if(files.length === 0 && master.length === 0) return alert("Pilih file Excel dulu ya, Pak.");
             
             if(files.length > 0) {
                 master = [];
                 for(let f of files) {
                     const d = await f.arrayBuffer();
                     const wb = XLSX.read(d);
-                    master = master.concat(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+                    const raw = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+                    master = master.concat(raw);
                 }
             }
 
             const n = parseInt(document.getElementById('num').value);
             results = Array.from({length:n}, () => []);
-            let students = master.map(r => ({
-                NAMA: String(r.NAMA || r.Nama || r["NAMA LENGKAP"] || "").trim().toUpperCase(),
-                JK: String(r.JK || r.Sex || r["L/P"] || "").charAt(0).toUpperCase()
-            })).filter(s => s.NAMA !== "");
+            
+            // Logika Deteksi Kolom Cerdas
+            let students = master.map(r => {
+                let kNama = Object.keys(r).find(k => k.toUpperCase().includes("NAMA") || k.toUpperCase().includes("SISWA"));
+                let kJK = Object.keys(r).find(k => k.toUpperCase().includes("JK") || k.toUpperCase().includes("SEX") || k.toUpperCase().includes("L/P"));
+                return {
+                    NAMA: kNama ? String(r[kNama]).trim().toUpperCase() : "",
+                    JK: kJK ? String(r[kJK]).charAt(0).toUpperCase() : "-"
+                };
+            }).filter(s => s.NAMA !== "" && s.NAMA !== "UNDEFINED");
+
+            if (students.length === 0) return alert("Gagal membaca data. Pastikan ada kolom 'Nama Lengkap'.");
 
             let used = new Set();
             for(let i=0; i<n; i++) {
@@ -233,7 +245,7 @@
                 out.innerHTML += `
                 <div class="glass rounded-[2rem] overflow-hidden shadow-xl border-b-8 border-blue-600 animate-fade">
                     <div class="blue-gradient p-5 text-white flex justify-between items-center">
-                        <span class="font-black text-xs tracking-widest uppercase italic">ROMBEL ${ALPHABET[i]}</span>
+                        <span class="font-black text-xs uppercase italic">ROMBEL ${ALPHABET[i]}</span>
                         <span class="bg-white/20 px-4 py-1 rounded-full text-[10px] font-black">${cls.length} SISWA</span>
                     </div>
                     <div class="p-6 text-[11px] font-bold text-slate-700 space-y-2">
@@ -250,7 +262,7 @@
 
         async function printPDF() {
             const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', [215, 330]);
+            const doc = new jsPDF('p', 'mm', [215, 330]); // Ukuran F4
             const tgl = formatTgl(new Date());
             const logoL = document.getElementById('prevLeft').src;
             const logoR = document.getElementById('prevRight').src;
@@ -267,39 +279,35 @@
                 doc.setLineWidth(0.8).line(15, 32, 200, 32);
 
                 doc.autoTable({
-                    startY: 38, head: [['NO', 'NAMA LENGKAP SISWA', 'JK']],
+                    startY: 38, 
+                    head: [['NO', 'NAMA LENGKAP SISWA', 'JK']],
                     body: cls.map((s, idx) => [idx+1, s.NAMA, s.JK]),
-                    headStyles: { fillColor: [30, 64, 175] }, styles: { fontSize: 9, font: 'helvetica' }
+                    headStyles: { fillColor: [30, 64, 175] },
+                    styles: { fontSize: 9 }
                 });
 
                 let y = doc.lastAutoTable.finalY + 15;
                 if (y > 280) { doc.addPage(); y = 20; }
 
-                doc.setFontSize(10);
-                doc.text("Kepala Sekolah,", 30, y);
-                doc.text(document.getElementById('kepsek').value, 30, y + 25);
-                doc.text(`NIP. ${document.getElementById('nip').value}`, 30, y + 30);
+                doc.setFontSize(10).text("Kepala Sekolah,", 30, y);
+                doc.text(document.getElementById('kepsek').value, 30, y + 22);
+                doc.setFont("helvetica", "normal").text(`NIP. ${document.getElementById('nip').value}`, 30, y + 27);
 
-                doc.text(`Bogor, ${tgl}`, 140, y);
+                doc.setFont("helvetica", "bold").text(`Bogor, ${tgl}`, 140, y);
                 doc.text("Wali Kelas,", 140, y + 5);
-                doc.text(document.getElementById(`w_${i}`).value || "________________", 140, y + 25);
-                doc.text(`NIP. ${document.getElementById(`wnip_${i}`).value || "________________"}`, 140, y + 30);
+                doc.text(document.getElementById(`w_${i}`).value || "________________", 140, y + 22);
+                doc.setFont("helvetica", "normal").text(`NIP. ${document.getElementById(`wnip_${i}`).value || "________________"}`, 140, y + 27);
             });
-            doc.save(`ROSTER_SDN5_${tgl}.pdf`);
+            doc.save(`DATA_ROMBEL_SDN5_${tgl}.pdf`);
         }
 
         function downloadTemplate() {
-            const ws = XLSX.utils.aoa_to_sheet([["NAMA", "JK"]]);
-            const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Data");
-            XLSX.writeFile(wb, "Template_Data_Siswa.xlsx");
-        }
-        
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').then(reg => {
-                    console.log('SW Registered!', reg);
-                }).catch(err => console.log('SW Failed', err));
-            });
+            const header = [["Nama Lengkap", "JK", "Alamat", "Kelas Asal", "NILAI"]];
+            const ws = XLSX.utils.aoa_to_sheet(header);
+            ws['!cols'] = [{ wch: 35 }, { wch: 5 }, { wch: 40 }, { wch: 15 }, { wch: 10 }];
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data");
+            XLSX.writeFile(wb, "Template_Master_SDN5.xlsx");
         }
         
         initUI();
