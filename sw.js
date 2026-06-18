@@ -1,45 +1,65 @@
-const CACHE_NAME = 'smart-class-v1.6'; // Ubah angka ini setiap kali ada update aplikasi
+// Ganti versi ini setiap kali Anda mengubah kode HTML/CSS/JS
+// agar browser otomatis memuat pembaruan aplikasi
+const CACHE_NAME = 'smart-class-pro-v1.7';
+
+// Daftar file lokal yang WAJIB disimpan di penyimpanan offline
 const urlsToCache = [
   './',
-  './index.html',
-  './manifest.json',
-  './icon.png' // Pastikan file gambar ini benar-benar ada di repo
+  './index.html', // Sesuaikan jika nama file HTML Anda berbeda
+  './manifest.json'
 ];
 
-// PROSES INSTALL & SIMPAN CACHE BARU
-self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+// 1. EVENT INSTALL: Menginstal Service Worker dan menyimpan file inti ke Cache
+self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Memaksa service worker baru untuk langsung aktif
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        console.log('[Service Worker] Caching App Shell');
+        return cache.addAll(urlsToCache);
+      })
   );
-  self.skipWaiting(); // Paksa service worker baru langsung aktif
 });
 
-// PROSES AKTIVASI & HAPUS CACHE VERSI LAMA
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
+// 2. EVENT ACTIVATE: Membersihkan cache versi lama saat ada pembaruan versi (CACHE_NAME berubah)
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          // Jika nama cache tidak sama dengan versi terbaru, maka hapus!
           if (cacheName !== CACHE_NAME) {
-            console.log('Menghapus cache lama:', cacheName);
+            console.log('[Service Worker] Menghapus cache lama:', cacheName);
             return caches.delete(cacheName);
           }
         })
       );
-    })
+    }).then(() => self.clients.claim()) // Memastikan SW langsung mengontrol semua halaman yang terbuka
   );
-  self.clients.claim();
 });
 
-// PROSES FETCH (MENAMPILKAN HALAMAN)
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((response) => {
-      // Jika ada di cache, tampilkan. Jika tidak, ambil dari internet (GitHub)
-      return response || fetch(e.request);
-    })
+// 3. EVENT FETCH: Strategi "Network First, fallback to Cache"
+// Cocok agar aplikasi selalu menampilkan versi terbaru jika ada internet, 
+// tapi tetap bisa dibuka jika sedang offline/tanpa sinyal.
+self.addEventListener('fetch', (event) => {
+  // Hanya proses request GET (mencegah error pada request lain)
+  if (event.request.method !== 'GET') return;
+
+  event.respondWith(
+    fetch(event.request)
+      .then((networkResponse) => {
+        // Jika berhasil ambil dari jaringan, simpan salinannya ke Dynamic Cache untuk offline
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+        }
+        return networkResponse;
+      })
+      .catch(() => {
+        // Jika gagal (Offline), ambil dari Cache
+        console.log('[Service Worker] Offline, memuat dari cache:', event.request.url);
+        return caches.match(event.request);
+      })
   );
 });
